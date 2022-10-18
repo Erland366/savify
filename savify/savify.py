@@ -62,7 +62,7 @@ class Savify:
 
         # Config or defaults...
         self.ydl_options = ydl_options or dict()
-        self.path_holder = PathHolder()
+        self.path_holder = path_holder if path_holder is not None else PathHolder()
         self.logger = logger or Logger(self.path_holder.data_path)
 
         if api_credentials is None:
@@ -181,6 +181,8 @@ class Savify:
         self.logger.info(message)
         self.queue_size -= len(queue)
         self.completed -= len(queue)
+        
+        return queue
 
     def _download(self, track: Track) -> dict:
         extractor = 'ytsearch'
