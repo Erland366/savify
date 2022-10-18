@@ -62,7 +62,7 @@ class Savify:
 
         # Config or defaults...
         self.ydl_options = ydl_options or dict()
-        self.path_holder = path_holder or PathHolder()
+        self.path_holder = PathHolder()
         self.logger = logger or Logger(self.path_holder.data_path)
 
         if api_credentials is None:
